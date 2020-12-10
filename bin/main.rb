@@ -59,15 +59,16 @@ class Game
   end
 
   def play
+    @board = Board.new
     moves = 0
     while moves < 9
       puts 'X, Enter 1-9 to play:'
       player_x_move = gets.chomp
-      puts "#{@board.to_s}" # This will display the board
+      puts "#{@board}" # This will display the board
 
       puts 'O, Enter 1-9 to play:'
       player_o_move = gets.chomp
-      puts "#{@board.to_s}" # This will display the board
+      puts "#{@board" # This will display the board
 
       puts "X played #{player_x_move} And O played #{player_o_move}"
 
@@ -80,6 +81,7 @@ class Game
     # Check if the move has already been played
     # Tell the user to make a valid move. (Return valid moves available)
   end
+
   def winning_move
     # Check if there is a winning combination
     # display who has won the game
@@ -102,5 +104,3 @@ game = Game.new
 game.play
 
 puts 'Thank you for playing'
-
-
