@@ -95,7 +95,6 @@ class Game
     # check if user request to quit the game (q)
     # exit game
   end
-  
 end
 game = Game.new
 game.play
