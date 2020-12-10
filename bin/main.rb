@@ -56,25 +56,20 @@ class Game
   # Start a new game by geting player names
   def initialize
     @player = Player.new
+    @board = Board.new
   end
 
   def play
-    @board = Board.new
     moves = 0
     while moves < 9
       puts 'X, Enter 1-9 to play:'
       player_x_move = gets.chomp
-      puts "#{@board}" # This will display the board
-
       puts 'O, Enter 1-9 to play:'
       player_o_move = gets.chomp
-      puts "#{@board}" # This will display the board
 
       puts "x played #{player_x_move} And o played #{player_o_move}"
-
       moves += 2
     end
-
   end
 
   def valid_move
