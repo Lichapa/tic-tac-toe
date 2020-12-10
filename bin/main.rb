@@ -9,21 +9,23 @@ puts 'But a number(move) can only be played once'
 puts ''
 
 class Player
-  attr_accessor :playerX
-  attr_accessor :playerO
+  attr_accessor :player_x
+
+  attr_accessor :player_o
+
   def initialize
     # Collect names if the players
     puts 'Player 1, Enter Name:'
-    @playerX = gets.chomp
+    @player_x = gets.chomp
     puts 'Player 2, Enter Name:'
-    @playerO = gets.chomp
+    @player_o = gets.chomp
     # Show the name of the player and the symbol
-    puts "#{@playerX} will be X AND #{@playerO} will be O"
+    puts "#{@player_x} will be X AND #{@player_o} will be O"
   end
 end
 
 class Board
-  attr_reader:board
+  attr_reader :board
 
   # Show what the Tic Tac Toe Board look like
   def initialize
@@ -37,46 +39,48 @@ class Board
     puts ' |___|___|___| '
     puts '               '
 
-    @board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+    @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   end
 
   # Display board after a player has played
   def display_board(board)
     puts "#{board[0]} | #{board[1]} | #{board[2]}"
-    puts "---------"
+    puts '---------'
     puts "#{board[3]} | #{board[4]} | #{board[5]}"
-    puts "---------"
+    puts '---------'
     puts "#{board[6]} | #{board[7]} | #{board[8]}"
   end
 end
 
 class Game
-  #Start a new game by geting player names
+  # Start a new game by geting player names
   def initialize
     @player = Player.new
   end
 
   def play
-    moves = 0 
+    moves = 0
     while moves < 9
       puts 'X, Enter 1-9 to play:'
-      playerXMove = gets.chomp
-      puts "#{@board}"
+      player_x_move = gets.chomp
+      puts "#{@board.to_s}" # This will display the board
 
-      puts 'O, Enter 1-9 to play:' 
-      playerOMove = gets.chomp
-      puts "#{@board}"
+      puts 'O, Enter 1-9 to play:'
+      player_o_move = gets.chomp
+      puts "#{@board.to_s}" # This will display the board
+
+      puts "X played #{player_x_move} And O played #{player_o_move}"
 
       moves += 2
     end
   end
 
-  def validMove
+  def valid_move
     # check if the input is between 1 and 9
     # Check if the move has already been played
     # Tell the user to make a valid move. (Return valid moves available)
   end
-  def winningMove
+  def winning_move
     # Check if there is a winning combination
     # display who has won the game
   end
@@ -87,15 +91,13 @@ class Game
     # display that the game is a draw
   end
 
-  def gameOver
+  def game_over
     # check if there is a winner
     # check if the game is a draw
     # check if user request to quit the game (q)
     # exit game
   end
-
 end
-
 game = Game.new
 game.play
 
