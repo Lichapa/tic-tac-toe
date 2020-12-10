@@ -60,15 +60,16 @@ class Game
   end
 
   def play
-    moves = 0
-    while moves < 9
+    game_over = false
+    while game_over
       puts 'X, Enter 1-9 to play:'
       player_x_move = gets.chomp
       puts 'O, Enter 1-9 to play:'
       player_o_move = gets.chomp
 
       puts "x played #{player_x_move} And o played #{player_o_move}"
-      moves += 2
+      
+      game_over = true if winner
     end
   end
 
