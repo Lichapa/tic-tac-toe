@@ -68,7 +68,7 @@ class Game
       player_o_move = gets.chomp
 
       puts "x played #{player_x_move} And o played #{player_o_move}"
-      
+
       game_over = true if winner
     end
   end
