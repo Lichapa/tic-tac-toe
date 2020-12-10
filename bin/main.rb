@@ -68,12 +68,13 @@ class Game
 
       puts 'O, Enter 1-9 to play:'
       player_o_move = gets.chomp
-      puts "#{@board" # This will display the board
+      puts "#{@board}" # This will display the board
 
-      puts "X played #{player_x_move} And O played #{player_o_move}"
+      puts "x played #{player_x_move} And o played #{player_o_move}"
 
       moves += 2
     end
+
   end
 
   def valid_move
@@ -99,6 +100,7 @@ class Game
     # check if user request to quit the game (q)
     # exit game
   end
+  
 end
 game = Game.new
 game.play
