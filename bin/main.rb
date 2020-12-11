@@ -39,7 +39,7 @@ class Board
     puts ' |___|___|___| '
     puts '               '
 
-    @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+    board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   end
 
   # Display board after a player has played
@@ -60,8 +60,9 @@ class Game
   end
 
   def play
-    game_over = false
-    while game_over
+    game_on = true
+
+    while game_on
       puts 'X, Enter 1-9 to play:'
       player_x_move = gets.chomp
       puts 'O, Enter 1-9 to play:'
@@ -69,8 +70,15 @@ class Game
 
       puts "x played #{player_x_move} And o played #{player_o_move}"
 
-      game_over = true if winner
+      winning_move = 'Congrads, You have won the game!'
+      draw = "It's a draw game."
+      invalid_move = 'The move in not valid, Please try again'
+
+      puts [winning_move, draw, invalid_move].sample
+
+      game_on = false
     end
+
   end
 
   def valid_move
