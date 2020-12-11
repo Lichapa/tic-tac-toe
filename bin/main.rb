@@ -39,7 +39,7 @@ class Board
     puts ' |___|___|___| '
     puts '               '
 
-    board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+    @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   end
 
   # Display board after a player has played
@@ -78,7 +78,6 @@ class Game
 
       game_on = false
     end
-
   end
 
   def valid_move
