@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 puts 'Welcome to Tic Tac Toe game.'
-puts '\n\n'
+puts ' '
 puts '----------------Instructions------------'
 puts 'The game require two players'
 puts 'Player can choose number 1 to 9 to represent a move    '
@@ -9,9 +9,7 @@ puts 'But a number(move) can only be played once'
 puts ''
 
 class Player
-  attr_accessor :player_x
-
-  attr_accessor :player_o
+  attr_accessor :player_x, :player_o
 
   def initialize
     # Collect names if the players
@@ -25,25 +23,15 @@ class Player
 end
 
 class Board
-  attr_reader :board
+  attr_accessor :board
 
   # Show what the Tic Tac Toe Board look like
+
   def initialize
-    puts 'This is the board of Tic Tac Toe '
-    puts '  ___ ___ ___  '
-    puts ' | 1 | 2 | 3 | '
-    puts ' |___|___|___| '
-    puts ' | 4 | 5 | 6 | '
-    puts ' |___|___|___| '
-    puts ' | 7 | 8 | 9 | '
-    puts ' |___|___|___| '
-    puts '               '
-
-    @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+    board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   end
-
   # Display board after a player has played
-  def display_board(board)
+  def display_board
     puts "#{board[0]} | #{board[1]} | #{board[2]}"
     puts '---------'
     puts "#{board[3]} | #{board[4]} | #{board[5]}"
@@ -56,19 +44,32 @@ class Game
   # Start a new game by geting player names
   def initialize
     @player = Player.new
-    @board = Board.new
+    @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+  end
+
+  def display_board
+    puts "#{@board[0]} | #{@board[1]} | #{@board[2]}"
+    puts '---------'
+    puts "#{@board[3]} | #{@board[4]} | #{@board[5]}"
+    puts '---------'
+    puts "#{@board[6]} | #{@board[7]} | #{@board[8]}"
   end
 
   def play
     game_on = true
 
     while game_on
+
+      
       puts 'X, Enter 1-9 to play:'
       player_x_move = gets.chomp
+
+
       puts 'O, Enter 1-9 to play:'
       player_o_move = gets.chomp
 
       puts "x played #{player_x_move} And o played #{player_o_move}"
+      
 
       winning_move = 'Congrads, You have won the game!'
       draw = "It's a draw game."
@@ -78,6 +79,7 @@ class Game
 
       game_on = false
     end
+    display_board
   end
 
   def valid_move
