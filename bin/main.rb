@@ -7,106 +7,137 @@ puts 'The game require two players'
 puts 'Player can choose number 1 to 9 to represent a move    '
 puts 'But a number(move) can only be played once'
 puts ''
+class GamePlay
 
-class Player
-  attr_accessor :player_x, :player_o
-
-  def initialize
-    # Collect names if the players
-    puts 'Player 1, Enter Name:'
-    @player_x = gets.chomp
-    puts 'Player 2, Enter Name:'
-    @player_o = gets.chomp
-    # Show the name of the player and the symbol
-    puts "#{@player_x} will be X AND #{@player_o} will be O"
-  end
-end
-
-class Board
   attr_accessor :board
 
-  # Show what the Tic Tac Toe Board look like
+  def initialize()
+    get_players
+    arr = [1,2,3,4,5,6,7,8,9]
+    @board = Board.new(arr)
+    play
+  end
 
-  def initialize
-    board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+  #Game play
+  def play()
+
+    while !@board.full?(@board.space)
+      @player.make_move(@player, @board, @board.space)
+      break if @board.win?(@board.space, @player)
+      change_player(@player)
+    end
+
+    if @board.win?(@board.space, @player)
+      puts "Congratulations, #{@player.name} wins!"
+      exit
+    elsif @board.full?(@board.space)
+      puts "Cat's game!"
+      exit
+    end
+
   end
-  # Display board after a player has played
-  def display_board
-    puts "#{board[0]} | #{board[1]} | #{board[2]}"
-    puts '---------'
-    puts "#{board[3]} | #{board[4]} | #{board[5]}"
-    puts '---------'
-    puts "#{board[6]} | #{board[7]} | #{board[8]}"
+
+  #Get player names
+  def get_players
+    puts "Player 1, Enter your Name: "
+    player1 = gets.chomp
+    @x = Player.new(player1, "X")
+    puts "Player 2, Enter your Name: "
+    player2 = gets.chomp
+    @o = Player.new(player2, "O")
+    @player = @x
   end
+
+  #Switch player
+  def change_player(player)
+    if (player == @x)
+      @player = @o
+    else
+      @player = @x
+    end
+  end
+
 end
 
-class Game
-  # Start a new game by geting player names
-  def initialize
-    @player = Player.new
-    @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-  end
+class Board 
+  attr_accessor :space
 
-  def display_board
-    puts "#{@board[0]} | #{@board[1]} | #{@board[2]}"
-    puts '---------'
-    puts "#{@board[3]} | #{@board[4]} | #{@board[5]}"
-    puts '---------'
-    puts "#{@board[6]} | #{@board[7]} | #{@board[8]}"
-  end
+  WIN_COMBINATIONS = [ 
+  [0,1,2], # top_row 
+  [3,4,5], # middle_row 
+  [6,7,8], # bottom_row 
+  [0,3,6], # left_column 
+  [1,4,7], # center_column 
+  [2,5,8], # right_column 
+  [0,4,8], # left_diagonal 
+  [6,4,2] # right_diagonal 
+  ]
 
-  def play
-    game_on = true
-
-    while game_on
-
-      
-      puts 'X, Enter 1-9 to play:'
-      player_x_move = gets.chomp
-
-
-      puts 'O, Enter 1-9 to play:'
-      player_o_move = gets.chomp
-
-      puts "x played #{player_x_move} And o played #{player_o_move}"
-      
-
-      winning_move = 'Congrads, You have won the game!'
-      draw = "It's a draw game."
-      invalid_move = 'The move in not valid, Please try again'
-
-      puts [winning_move, draw, invalid_move].sample
-
-      game_on = false
-    end
+  def initialize(space)
+    @space = space
     display_board
   end
 
-  def valid_move
-    # check if the input is between 1 and 9
-    # Check if the move has already been played
-    # Tell the user to make a valid move. (Return valid moves available)
+  #Create a new board
+  def display_board()
+      puts "| #{@space[0]} | #{@space[1]} | #{@space[2]} |"
+      puts "---------------"
+      puts "| #{@space[3]} | #{@space[4]} | #{@space[5]} |"
+      puts "---------------"
+      puts "| #{@space[6]} | #{@space[7]} | #{@space[8]} |"
+      puts
   end
 
-  def winning_move
-    # Check if there is a winning combination
-    # display who has won the game
+  #Update the board
+  def update_board(player, move)
+    @space[move] = "#{player.symbol}"
+    display_board
   end
 
-  def draw
-    # check if all the moves have been played
-    # check if the game has ended in a draw
-    # display that the game is a draw
+  def full?(board)
+    board.all? {|i| i == "X" || i == "O"}
   end
 
-  def game_over
-    # check if there is a winner
-    # check if the game is a draw
-    # check if user request to quit the game (q)
-    # exit game
+  def win?(board, player)
+      WIN_COMBINATIONS.any? do |combo|
+      combo.all? {|cell| board[cell] == player.symbol} 
+    end
   end
+
 end
-game = Game.new
-game.play
 
-puts 'Thank you for playing'
+class Player
+  attr_reader :name, :symbol
+
+  def initialize(name, symbol)
+    @name = name
+    @symbol = symbol
+  end
+
+  def make_move(player, board, move)
+    print "#{name}, It's your turn. Please make your move:"
+      placement = gets.chomp
+      index = get_index(placement)
+      while !valid_move?(move, index)
+        puts "Please pick a valid number above"
+        placement = gets.chomp
+        index = get_index(placement)
+      end
+      board.update_board(player, index)
+  end
+
+  def get_index(input)
+    input.to_i - 1
+  end
+
+  def position_taken?(board, index)
+    board[index] == "X" || board[index] == "O"
+  end
+
+  def valid_move?(board, index)
+    index.between?(0,8) && !position_taken?(board, index) 
+  end
+
+end
+
+game = GamePlay.new
