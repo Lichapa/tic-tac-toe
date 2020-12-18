@@ -8,8 +8,8 @@ puts 'Player can choose number 1 to 9 to represent a move    '
 puts 'But a number(move) can only be played once'
 puts ''
 
-require_relative '../lib/player.rb'
-require_relative '../lib/board.rb'
+require_relative '../lib/player'
+require_relative '../lib/board'
 
 class GamePlay
   attr_accessor :board
