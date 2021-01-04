@@ -22,9 +22,10 @@ This project requires to complete the following milestones:
 
 ## Getting Started
 
-To play this game you have to follow the link below to play online.
+** You can play this game online by openig the followin link **
 
 -[Play Here](https://repl.it/@MphatsoLichapa/tic-tac-toe#.replit)
+-Once you are onsite, click run button to start the game
 
 ### Game instruction
 
