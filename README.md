@@ -20,6 +20,23 @@ This project requires to complete the following milestones:
 
 - [Ruby](https://www.ruby-lang.org/en/)
 
+## Getting Started
+
+To play this game you have to follow the link below to play online.
+
+-[Play Here](https://repl.it/@MphatsoLichapa/tic-tac-toe#.replit)
+
+### Game instruction
+
+Tic-Tac-Toe is a very popular game, which consists in making a sequence of three symbols in either a row, column or diagonal in a 3x3 board.
+To play the game follow the getting started steps mentioned above this file. After you done that, run the main file and follow these steps:
+- The game displays the board with the a welcome note on top.
+- You will be prompted as a first player to enter your preferred name.
+- You will be prompted as a second player to enter your preferred name.
+- You will be prompted to choose who should go first.
+- You will be provided with the choices you can pick from that is, between 1 - 9.
+- You will play in turns, in sequence till the board is full then it will announce the game results ie, draw or winner.
+- If you want to play again you can say (Y) yes or entirely quit the game by choosing (N).
 
 ## Contributing
 
