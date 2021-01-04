@@ -22,10 +22,28 @@ This project requires to complete the following milestones:
 
 ## Getting Started
 
-** You can play this game online by openig the followin link **
+### Playing online
+
+**You can play this game online by openig the followin link**
 
 -[Play Here](https://repl.it/@MphatsoLichapa/tic-tac-toe#.replit)
 -Once you are onsite, click run button to start the game
+
+### Installation
+
+**To get this project set up on your local machine, follow these simple steps:**
+
+1. Open Terminal.
+2. Navigate to your desired location to download the contents of this repository.
+3. Copy and paste the following code into the Terminal:
+   `git clone https://github.com/Lichapa/tic-tac-toe.git`
+   then Hit enter
+4. Once the repository has been cloned, navigate inside the repository by typing `cd tic-tac-toe` the Press enter
+5. type:
+   `bin/main.rb` 
+   then press enter
+   This will run the game and you will be able to play it using the terminal.
+6. Have fun!
 
 ### Game instruction
 
