@@ -13,12 +13,14 @@ require_relative '../lib/board'
 
 class GamePlay
   attr_accessor :board
+  attr_reader :name, :symbol
 
   def initialize()
     players
     arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     @board = Board.new(arr)
     play
+    make_move
   end
 
   def play()
@@ -31,10 +33,10 @@ class GamePlay
 
     if @board.win?(@board.space, @player)
       puts "Congratulations, #{@player.name} wins!"
-      exit
+      play_again?
     elsif @board.full?(@board.space)
-      puts "Cat's game!"
-      exit
+      puts "It's a Tie"
+      play_again?
     end
   end
 
@@ -56,6 +58,34 @@ class GamePlay
                 @x
               end
   end
+
+  def play_again?
+    answer = ''
+    while answer != 'Y' && answer != 'N'
+      puts 'Play again? (Y/N)'
+      answer = gets.chomp.capitalize
+    end
+    case answer
+    when 'Y'
+      GamePlay.new
+    when 'N'
+      exit
+    end
+  end
+end
+
+public
+
+def make_move(player, board, move)
+  print "#{name}, It's your turn. Please make your move: "
+  placement = gets.chomp
+  index = get_index(placement)
+  until valid_move?(move, index)
+    puts 'Please pick a valid number above'
+    placement = gets.chomp
+    index = get_index(placement)
+  end
+  board.update_board(player, index)
 end
 
 GamePlay.new

@@ -6,18 +6,6 @@ class Player
     @symbol = symbol
   end
 
-  def make_move(player, board, move)
-    print "#{name}, It's your turn. Please make your move:"
-    placement = gets.chomp
-    index = get_index(placement)
-    until valid_move?(move, index)
-      puts 'Please pick a valid number above'
-      placement = gets.chomp
-      index = get_index(placement)
-    end
-    board.update_board(player, index)
-  end
-
   def get_index(input)
     input.to_i - 1
   end
