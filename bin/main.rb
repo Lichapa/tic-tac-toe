@@ -46,6 +46,9 @@ class GamePlay
     player2 = gets.chomp
     @o = Player.new(player2, 'O')
     @player = @x
+    puts ' '
+    puts "#{player1} will be X & #{player2} will O"
+    puts ' '
   end
 
   # Switch player
