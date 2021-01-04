@@ -20,6 +20,42 @@ This project requires to complete the following milestones:
 
 - [Ruby](https://www.ruby-lang.org/en/)
 
+## Getting Started
+
+### Playing online
+
+**You can play this game online by openig the followin link**
+
+-[Play Here](https://repl.it/@MphatsoLichapa/tic-tac-toe#.replit)
+-Once you are onsite, click run button to start the game
+
+### Installation
+
+**To get this project set up on your local machine, follow these simple steps:**
+
+1. Open Terminal.
+2. Navigate to your desired location to download the contents of this repository.
+3. Copy and paste the following code into the Terminal:
+   `git clone https://github.com/Lichapa/tic-tac-toe.git`
+   then Hit enter
+4. Once the repository has been cloned, navigate inside the repository by typing `cd tic-tac-toe` the Press enter
+5. type:
+   `bin/main.rb` 
+   then press enter
+   This will run the game and you will be able to play it using the terminal.
+6. Have fun!
+
+### Game instruction
+
+Tic-Tac-Toe is a very popular game, which consists in making a sequence of three symbols in either a row, column or diagonal in a 3x3 board.
+To play the game follow the getting started steps mentioned above this file. After you done that, run the main file and follow these steps:
+- The game displays the board with the a welcome note on top.
+- You will be prompted as a first player to enter your preferred name.
+- You will be prompted as a second player to enter your preferred name.
+- You will be prompted to choose who should go first.
+- You will be provided with the choices you can pick from that is, between 1 - 9.
+- You will play in turns, in sequence till the board is full then it will announce the game results ie, draw or winner.
+- If you want to play again you can say (Y) yes or entirely quit the game by choosing (N).
 
 ## Contributing
 
