@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 puts 'Welcome to Tic Tac Toe game.'
 puts ' '
 puts '----------------Instructions------------'
