@@ -14,17 +14,15 @@ class Board
 
   def initialize(space)
     @space = space
-    display_board
   end
 
   # Create a new board
-  def display_board()
+  def display_board
     puts "| #{@space[0]} | #{@space[1]} | #{@space[2]} |"
     puts '---------------'
     puts "| #{@space[3]} | #{@space[4]} | #{@space[5]} |"
     puts '---------------'
     puts "| #{@space[6]} | #{@space[7]} | #{@space[8]} |"
-    puts
   end
 
   # Update the board

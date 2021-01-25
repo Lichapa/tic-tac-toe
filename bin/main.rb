@@ -8,8 +8,10 @@ puts ''
 
 require_relative '../lib/player'
 require_relative '../lib/board'
+require_relative '../lib/game_logic'
 
 class GamePlay
+  include Game
   attr_accessor :board
   attr_reader :name, :symbol
 
@@ -18,7 +20,7 @@ class GamePlay
     arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     @board = Board.new(arr)
     play
-    make_move
+    make
   end
 
   def play()
@@ -49,15 +51,6 @@ class GamePlay
     puts "\n #{player1} will be X & #{player2} will O \n "
   end
 
-  # Switch player
-  def change_player(player)
-    @player = if player == @x
-                @o
-              else
-                @x
-              end
-  end
-
   def play_again?
     answer = ''
     while answer != 'Y' && answer != 'N'
@@ -74,6 +67,8 @@ class GamePlay
 end
 
 public
+
+include Game
 
 def make_move(player, board, move)
   print "#{name}, It's your turn. Please make your move: "
